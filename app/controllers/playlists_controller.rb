@@ -6,7 +6,7 @@ class PlaylistsController < ApplicationController
   def create
     @playlist = Playlist.new(playlist_params)
 
-    render :new, status: 422 unless @playlist.save
+    redirect_back_or_to(playlists_path) if @playlist.save
   end
 
   private
