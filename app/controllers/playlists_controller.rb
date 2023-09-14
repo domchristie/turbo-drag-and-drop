@@ -6,7 +6,11 @@ class PlaylistsController < ApplicationController
   def create
     @playlist = Playlist.new(playlist_params)
 
-    redirect_back_or_to(playlists_path) if @playlist.save
+    if @playlist.save
+      redirect_back_or_to(playlists_path)
+    else
+      render :new
+    end
   end
 
   private
